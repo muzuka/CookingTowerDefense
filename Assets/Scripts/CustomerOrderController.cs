@@ -5,19 +5,54 @@ using UnityEngine.UI;
 
 public class CustomerOrderController : MonoBehaviour {
 
+    public Sprite[] sprites;
+
     public Canvas customerCanvas;
 
-    Order currentOrder;
+    public Order currentOrder { get; set; }
 
-	// Use this for initialization
-	void Start () {
-        customerCanvas = Instantiate(customerCanvas);
-
-        GameObject panel = customerCanvas.gameObject.GetComponentInChildren<Image>().gameObject;
-	}
+    List<Order> orders;
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         customerCanvas.transform.position = new Vector3(transform.position.x, customerCanvas.transform.position.y, transform.position.z);
 	}
+
+    private void OnDisable()
+    {
+        Destroy(customerCanvas.gameObject);
+    }
+
+    public void setOrder(Order order)
+    {
+        customerCanvas = Instantiate(customerCanvas, new Vector3(transform.position.x, customerCanvas.transform.position.y, transform.position.z), customerCanvas.transform.rotation);
+        currentOrder = order;
+        Image[] images = customerCanvas.gameObject.GetComponentsInChildren<Image>();
+
+        images[1].sprite = sprites[0];
+        images[2].sprite = sprites[1];
+
+        if (currentOrder.ingredients[2] == "TopBun")
+        {
+            images[3].sprite = sprites[2];
+        }
+        else if (currentOrder.ingredients[2] == "Ketchup")
+        {
+            images[3].sprite = sprites[3];
+        }
+        else if (currentOrder.ingredients[2] == "Mustard")
+        {
+            images[3].sprite = sprites[4];
+        }
+
+        if (currentOrder.ingredients.Count == 4)
+        {
+            images[4].sprite = sprites[2];
+        }
+        else
+        {
+            Destroy(images[4]);
+        }
+    }
 }
