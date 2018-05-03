@@ -9,6 +9,7 @@ public class CustomerSpawnPoint : MonoBehaviour {
     [Tooltip("Indexes into the orderList object in the script.")]
     public List<int> customerOrders;
     public float spawnInterval;
+    public float rotation;
 
     GameController gameController;
 
@@ -57,7 +58,7 @@ public class CustomerSpawnPoint : MonoBehaviour {
     {
         if (customerCount < customerOrders.Count)
         {
-            newCustomer = Instantiate(customer, transform.position, Quaternion.identity);
+            newCustomer = Instantiate(customer, transform.position, Quaternion.Euler(0.0f, rotation, 0.0f));
             newCustomer.GetComponent<CustomerMover>().destination = destinations;
             gameController.customerList.Add(newCustomer.GetComponent<CustomerOrderController>());
             if (customerOrders[customerCount] < orderList.Count)
