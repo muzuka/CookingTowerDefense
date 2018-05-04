@@ -21,7 +21,8 @@ public class CustomerOrderController : MonoBehaviour {
 
     private void OnDisable()
     {
-        Destroy(customerCanvas.gameObject);
+        if (customerCanvas.gameObject != null)
+            Destroy(customerCanvas.gameObject);
     }
 
     public void setOrder(Order order)
