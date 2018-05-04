@@ -3204,6 +3204,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 108672756498895592, guid: ef0604892fef1ee4281cddb8da29650d,
+        type: 2}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108672756498895592, guid: ef0604892fef1ee4281cddb8da29650d,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 108672756498895592, guid: ef0604892fef1ee4281cddb8da29650d,
+        type: 2}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef0604892fef1ee4281cddb8da29650d, type: 2}
   m_IsPrefabParent: 0
