@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour {
         }
         else
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
