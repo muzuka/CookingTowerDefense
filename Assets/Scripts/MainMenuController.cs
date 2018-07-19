@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour {
 
     public void startButtonPressed()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void quitButtonPressed()
