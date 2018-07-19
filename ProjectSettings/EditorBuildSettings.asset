@@ -6,11 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: be3eaf95503e6ac4d9b29a1a695bd1ee
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: f0fd5d2a6095aae4789dce2b6ad8fdec
+  - enabled: 1
+    path: Assets/Scenes/BurgerLevel1.unity
     guid: 61f7b4f4f81e8414897d805ada1b099e
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/BurgerLevel2.unity
     guid: 4b9d646ce68be42d798bf9de6d747b0b
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
+    path: Assets/Scenes/BurgerLevel3.unity
     guid: 9854fee6f86714b20912f3b2ea8b8792
+  m_configObjects: {}
