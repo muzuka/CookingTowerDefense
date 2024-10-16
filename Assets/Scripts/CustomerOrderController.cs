@@ -19,9 +19,9 @@ public class CustomerOrderController : MonoBehaviour {
         customerCanvas.transform.position = new Vector3(transform.position.x, customerCanvas.transform.position.y, transform.position.z);
 	}
 
-    private void OnDisable()
+    void OnDisable()
     {
-        if (customerCanvas.gameObject != null)
+        if (customerCanvas != null && customerCanvas.gameObject != null)
             Destroy(customerCanvas.gameObject);
     }
 
