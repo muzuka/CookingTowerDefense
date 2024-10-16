@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameController : MonoBehaviour {
 
-    public Text healthText;
+    public HealthController healthBar;
 
     public int maxHealth;
 
-    public Image winPanel;
-    public Image losePanel;
-    public Image pausePanel;
-    public Image hotkeyPanel;
+    public GameObject winPanel;
+    public GameObject losePanel;
+    public GameObject pausePanel;
+    public GameObject hotkeyPanel;
 
     public string nextLevelName;
 
@@ -26,6 +27,7 @@ public class GameController : MonoBehaviour {
     void Start()
     {
         health = maxHealth;
+        healthBar.initializeHealth(maxHealth);
         customerList = new List<CustomerOrderController>();
 
         winPanel.gameObject.SetActive(false);
@@ -42,8 +44,6 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
-        healthText.text = "Health: " + health;
-
         if(Input.GetKeyUp(KeyCode.Escape))
         {
             pauseGame();
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour {
 
     void decreaseHealth() 
     {
-        health--;
+        healthBar.loseHealth();
         if (health <= 0) 
         {
             loseGame();
@@ -112,6 +112,7 @@ public class GameController : MonoBehaviour {
             spawnPoints[i].restart();
         }
         health = maxHealth;
+        healthBar.initializeHealth(maxHealth);
         resume();
         losePanel.gameObject.SetActive(false);
 
