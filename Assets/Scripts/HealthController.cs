@@ -8,6 +8,7 @@ public class HealthController : MonoBehaviour
     public GameObject HealthSpriteTemplate;
     public int StartSpawn;
     public int SpaceBetween;
+    public int VerticalOffset;
 
     List<GameObject> healthSprites;
     int maxHealth;
@@ -22,7 +23,7 @@ public class HealthController : MonoBehaviour
         
         for (int i = 0; i < maxHealth; i++)
         {
-            nextPos = new Vector3(transform.position.x + StartSpawn + (SpaceBetween * i), transform.position.y, transform.position.z);
+            nextPos = new Vector3(transform.position.x + StartSpawn + (SpaceBetween * i), transform.position.y + VerticalOffset, transform.position.z);
             sprite = Instantiate(HealthSpriteTemplate, transform);
             sprite.transform.position = nextPos;
             sprite.SetActive(true);

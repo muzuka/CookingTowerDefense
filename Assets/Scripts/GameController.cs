@@ -11,15 +11,22 @@ public class GameController : MonoBehaviour {
 
     public int maxHealth;
 
+    public string nextLevelName;
+    
+    [Header("Menus")]
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject pausePanel;
     public GameObject hotkeyPanel;
 
-    public string nextLevelName;
+    public GameObject BurgerTemp;
+    public Transform BurgerSpawn;
+    public float BurgerSpeed;
 
-    public List<CustomerOrderController> customerList { get; set; }
+    List<CustomerOrderController> customerList;
 
+    GameObject burger;
+    
     int health;
     int totalCustomers = 0;
     int customersServed = 0;
@@ -79,17 +86,55 @@ public class GameController : MonoBehaviour {
             List<string> orderToppings = customerList[i].currentOrder.ingredients;
             if (toppingsMatch(toppingArray, orderToppings)) 
             {
+                // Shoot burger
                 CustomerOrderController customerToDestroy = customerList[i];
                 customerList.Remove(customerToDestroy);
-                Destroy(customerToDestroy.gameObject);
-                customersServed++;
-                if (customersServed >= totalCustomers)
-                {
-                    winGame();
-                }
+                shootBurger(customerToDestroy.gameObject);
                 break;
             }
         }
+    }
+
+    public void shootBurger(GameObject customer)
+    {
+        burger = Instantiate(BurgerTemp);
+        burger.transform.position = BurgerSpawn.position;
+        burger.SetActive(true);
+        StartCoroutine(moveBurger(customer));
+    }
+
+    IEnumerator moveBurger(GameObject customer)
+    {
+        float time = 0f;
+        Vector3 pos = Vector3.Lerp(BurgerSpawn.position, customer.transform.position, 0f);
+        burger.transform.position = pos;
+
+        while (time <= 1f)
+        {
+            pos = Vector3.Lerp(BurgerSpawn.position, customer.transform.position, time);
+            burger.transform.position = pos;
+            time += Time.deltaTime * BurgerSpeed;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        
+        hitCustomer(customer);
+        yield return null;
+    }
+
+    public void hitCustomer(GameObject customer)
+    {
+        Destroy(burger);
+        Destroy(customer);
+        customersServed++;
+        if (customersServed >= totalCustomers)
+        {
+            winGame();
+        }
+    }
+
+    public void AddCustomer(CustomerOrderController order)
+    {
+        customerList.Add(order);
     }
 
     public void nextLevel()

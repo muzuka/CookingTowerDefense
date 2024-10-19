@@ -2594,8 +2594,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthSpriteTemplate: {fileID: 9164016538204186984}
-  StartSpawn: 40
-  SpaceBetween: 30
+  StartSpawn: 50
+  SpaceBetween: 40
+  VerticalOffset: 5
 --- !u!1 &1455466332308182
 GameObject:
   m_ObjectHideFlags: 0

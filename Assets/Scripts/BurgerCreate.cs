@@ -62,7 +62,10 @@ public class BurgerCreate : MonoBehaviour {
 
     public void addTopping(string topping)
     {
-        GameObject burgerTopping = Instantiate(toppingObjects[toppingNames.IndexOf(topping)], transform.position + new Vector3(0.0f, burgerThickness * burger.Count, 0.0f), Quaternion.identity, transform);
+        GameObject burgerTopping = Instantiate(
+                toppingObjects[toppingNames.IndexOf(topping)], transform);
+        burgerTopping.transform.localPosition = new Vector3(0.0f, burgerThickness * burger.Count, 0.0f);
+        Debug.Log($"Spawned {topping} at {burgerTopping.transform.position.ToString()}");
         burger.Push(burgerTopping);
         burgerStrings.Push(topping);
     }

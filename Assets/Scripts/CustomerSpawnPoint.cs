@@ -60,7 +60,7 @@ public class CustomerSpawnPoint : MonoBehaviour {
         {
             newCustomer = Instantiate(customer, transform.position, Quaternion.Euler(0.0f, rotation, 0.0f));
             newCustomer.GetComponent<CustomerMover>().destination = destinations;
-            gameController.customerList.Add(newCustomer.GetComponent<CustomerOrderController>());
+            gameController.AddCustomer(newCustomer.GetComponent<CustomerOrderController>());
             if (customerOrders[customerCount] < orderList.Count)
             {
                 newCustomer.GetComponent<CustomerOrderController>().setOrder(orderList[customerOrders[customerCount]]);

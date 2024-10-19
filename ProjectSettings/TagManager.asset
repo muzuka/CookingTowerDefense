@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 1408740017
+    locked: 0
+  - name: 3DOverlay
+    uniqueID: 1223867993
+    locked: 0
